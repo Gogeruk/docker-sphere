@@ -15,28 +15,26 @@ do
 xdebug.client_host=<ip>
 
 3.
-put
-<PHP SPHERE PROJECT>
+put files from
+<YOUR PHP PROJECT>
 in
 /app
 
 4.
-make sure that in
-app/config.ini
-is
-url = http://localhost:8080
+docker-compose up -d --build
+docker ps
+docker exec -it <id php docker container> /bin/bash
 
 5.
-docker-compose up -d --build
+go into php docker container
+and install/config stuff like
+composer install or .env
 
 6.
-go into php docker container
-and install stuff
-
-7.
 go to
 http://localhost:8080/
 
+7.
 
 
 

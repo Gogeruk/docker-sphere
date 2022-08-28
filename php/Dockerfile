@@ -14,6 +14,7 @@ RUN apt update \
         curl \
         g++ \
         git \
+        gnupg\
         wget \
         zip \
         vim \
@@ -37,7 +38,19 @@ RUN apt update \
 
 
 # Set the working directory
-WORKDIR /var/www/php-sphere
+WORKDIR /var/www/glows
+
+
+# install yarn
+RUN apt-get install -y apt-transport-https ca-certificates
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get install -y yarn
+
+
+# install nodejs
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash
+RUN apt-get install -y nodejs
 
 
 # Install composer
